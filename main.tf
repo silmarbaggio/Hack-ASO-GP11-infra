@@ -1,7 +1,7 @@
 locals {
   gcp_project      = "hack-aso-grupo-11"
   region           = "us-central1"
-  #credentials_path = "./credentials.json"
+  credentials_path = "./credentials.json"
   cloud_organization = "gustavonj"
 }
 
@@ -26,11 +26,13 @@ terraform {
 provider "google" {
   project = local.gcp_project
   region  = local.region
+  credentials = file(local.credentials_path)
 }
 
 provider "google-beta" {
   project = local.gcp_project
   region  = local.region
+  credentials = file(local.credentials_path)
 }
 
 
